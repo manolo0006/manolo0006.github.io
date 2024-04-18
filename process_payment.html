@@ -1,25 +1,58 @@
-<?php
-// Controlla se le credenziali dell'amministratore sono valide (questo è solo un esempio, dovresti utilizzare un metodo sicuro per autenticare gli amministratori)
-$admin_username = "admin";
-$admin_password = "password";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elenco Output</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Elenco Output</h2>
+        <ul id="outputList">
+            <li><strong>Numero della Carta di Credito:</strong> <span id="cardNumber"></span></li>
+            <li><strong>Data di Scadenza:</strong> <span id="expirationDate"></span></li>
+            <li><strong>CVV:</strong> <span id="cvv"></span></li>
+        </ul>
+    </div>
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    <script>
+        window.onload = function() {
+            var params = new URLSearchParams(window.location.search);
+            var cardNumber = params.get('card_number');
+            var expirationDate = params.get('expiration_date');
+            var cvv = params.get('cvv');
 
-    if ($username === $admin_username && $password === $admin_password) {
-        // Credenziali corrette, reindirizza l'amministratore alla pagina riservata agli amministratori
-        header("Location: pagina_amministratori.php");
-        exit;
-    } else {
-        // Credenziali non corrette, reindirizza altrove (ad esempio, pagina di errore)
-        header("Location: pagina_errore.php");
-        exit;
-    }
-} else {
-    // Se non sono stati inviati username e password, reindirizza altrove
-    header("Location: pagina_errore.php");
-    exit;
-}
-?>
-
+            document.getElementById('cardNumber').innerText = cardNumber;
+            document.getElementById('expirationDate').innerText = expirationDate;
+            document.getElementById('cvv').innerText = cvv;
+        };
+    </script>
+</body>
+</html>
