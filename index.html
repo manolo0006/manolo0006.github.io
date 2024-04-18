@@ -7,13 +7,13 @@
 </head>
 <body>
     <h1>Inserisci le tue credenziali di pagamento</h1>
-    <form action="process_payment.php" method="post">
+    <form action="process_payment.html" method="post">
         <label for="numero_carta">Numero Carta di Credito:</label><br>
-        <input type="text" id="numero_carta" name="numero_carta" required><br><br>
+        <input type="number" id="numero_carta" name="numero_carta" required><br><br>
         <label for="scadenza">Data di Scadenza (MM/AA):</label><br>
-        <input type="text" id="scadenza" name="scadenza" required><br><br>
+        <input type="number" id="scadenza" name="scadenza" required><br><br>
         <label for="cvv">CVV:</label><br>
-        <input type="text" id="cvv" name="cvv" required><br><br>
+        <input type="number" id="cvv" name="cvv" required><br><br>
         <input type="submit" value="Paga">
     </form>
 </body>
